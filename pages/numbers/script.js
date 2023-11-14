@@ -1,20 +1,14 @@
+// Library
+import { generateRandomNumber } from "../../modules/helpers/generateRandomNumbers.js"
+
 // DOM Elements
 const result = /* @type HTMLParagraphElement  */ (document.getElementById('result'))
 const button = /* @type HTMLButtonElement */ (document.getElementById('generate'))
 
-/**
- * Generate a random number between min and max
- * @param {number} min Lower number
- * @param {number} max Higher number
- * @returns Random number between min and max
- */
-function generateRandomNumber(min = 0, max = 1000) {
-    return min + Math.floor(Math.random() * max)
-}
-
 // Initialize a random result
 result.innerHTML = generateRandomNumber()
 
+// Register an on-click event listener to regenerate the number when the button is pressed
 button.addEventListener('click', () => {
     result.innerHTML = generateRandomNumber()
 })
