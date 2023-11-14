@@ -85,6 +85,22 @@ button:hover {
 
 /* UTILITY */
 
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
 .bold {
     font-weight: bold;
 }
@@ -115,20 +131,4 @@ button:hover {
 
 .font-size-6 {
     font-size: 5rem;
-}
-
-.flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.flex-row {
-    flex-direction: row;
-}
-
-.flex-column {
-    flex-direction: column;
 }
