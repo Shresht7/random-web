@@ -27,7 +27,7 @@ nav li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: var(--border-thickness) solid var(--color-text);
+    border: var(--border);
     border-radius: var(--border-radius);
     padding: 1rem 1.5rem;
     transition: all var(--animation-duration) ease-in;
