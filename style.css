@@ -8,6 +8,11 @@
 
     --font-family: Comfortaa, sans-serif;
     --font-family-cursive: Caveat, cursive;
+
+    --border-thickness: 2px;
+    --border-radius: 8px;
+
+    --animation-duration: 125ms;
 }
 
 /* RESET */
@@ -49,6 +54,7 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
 /* Navigation */
 
 nav ul {
@@ -71,4 +77,40 @@ nav li {
 
 .font-family-cursive {
     font-family: var(--font-family-cursive);
+}
+
+/* MENU */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+#menu .menu-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: var(--border-thickness) solid var(--color-text);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.5rem;
+    transition: all var(--animation-duration) ease-in;
+}
+
+#menu .menu-item:hover {
+    transform: scale(1.1);
+    color: var(--color-primary);
+    background-color: var(--color-text);
 }
