@@ -1,61 +1,4 @@
-/* IMPORTS */
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Caveat:wght@600&display=swap');
-
-/* VARIABLES */
-:root {
-    --color-primary: #971d41;
-    --color-text: #EEE;
-
-    --font-family: Comfortaa, sans-serif;
-    --font-family-cursive: Caveat, cursive;
-
-    --border-thickness: 2px;
-    --border-radius: 8px;
-
-    --animation-duration: 125ms;
-}
-
-/* RESET */
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-/* BASE */
-
-body,
-html {
-    height: 100dvh;
-    width: 100dvw;
-    font-family: var(--font-family);
-    color: var(--color-text);
-    background-color: var(--color-primary);
-}
-
-/* GENERAL */
-
-header {
-    text-align: center;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Navigation */
+/* NAVIGATION */
 
 nav ul {
     display: flex;
@@ -66,17 +9,6 @@ nav ul {
 
 nav li {
     list-style-type: none;
-}
-
-
-/* UTILITY */
-
-.bold {
-    font-weight: 700;
-}
-
-.font-family-cursive {
-    font-family: var(--font-family-cursive);
 }
 
 /* MENU */
