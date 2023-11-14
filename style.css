@@ -13,14 +13,6 @@ nav li {
 
 /* MENU */
 
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-}
-
 #menu {
     display: flex;
     flex-direction: row;
