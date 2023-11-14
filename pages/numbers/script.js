@@ -3,7 +3,7 @@ import { generateRandomNumber } from "../../modules/helpers/generateRandomNumber
 
 // DOM Elements
 const result = /* @type HTMLParagraphElement  */ (document.getElementById('result'))
-const button = /* @type HTMLButtonElement */ (document.getElementById('generate'))
+const button = /* @type HTMLButtonElement */ (document.getElementById('randomize'))
 
 // Initialize a random result
 result.innerHTML = generateRandomNumber()
