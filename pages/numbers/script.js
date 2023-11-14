@@ -1,5 +1,6 @@
 // DOM Elements
 const result = /* @type HTMLParagraphElement  */ (document.getElementById('result'))
+const button = /* @type HTMLButtonElement */ (document.getElementById('generate'))
 
 /**
  * Generate a random number between min and max
@@ -13,3 +14,7 @@ function generateRandomNumber(min = 0, max = 1000) {
 
 // Initialize a random result
 result.innerHTML = generateRandomNumber()
+
+button.addEventListener('click', () => {
+    result.innerHTML = generateRandomNumber()
+})
