@@ -1,3 +1,9 @@
+/* VARIABLES */
+:root {
+    --color-primary: #971d41;
+    --color-text: #EEE;
+}
+
 /* RESET */
 
 *,
@@ -14,6 +20,8 @@ body,
 html {
     height: 100dvh;
     width: 100dvw;
+    color: var(--color-text);
+    background-color: var(--color-primary);
 }
 
 /* GENERAL */
