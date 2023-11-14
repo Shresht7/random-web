@@ -92,3 +92,18 @@ button:hover {
 .font-family-cursive {
     font-family: var(--font-family-cursive);
 }
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
