@@ -45,6 +45,10 @@ body {
     padding: 2rem;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
 /* Navigation */
 
 nav ul {
