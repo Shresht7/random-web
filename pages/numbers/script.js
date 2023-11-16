@@ -1,4 +1,5 @@
 // Library
+import { URLState } from "../../modules/classes/URLState.js";
 import { generateRandomNumber } from "../../modules/helpers/generateRandomNumbers.js"
 
 // DOM Elements
@@ -11,6 +12,9 @@ const maxInput = /** @type HTMLInputElement */ (document.getElementById('max'))
 let min = +minInput.value
 let max = +maxInput.value
 let number = generateRandomNumber(min, max)
+
+// URL State Manager
+const state = new URLState()
 
 // Initialize a random result
 result.innerHTML = number
@@ -27,3 +31,9 @@ minInput.addEventListener('change', (e) => {
 maxInput.addEventListener('change', (e) => {
     max = +e.target.value
 })
+
+new MutationObserver((records) => {
+    records.forEach(record => {
+        state.setState('number', record.target.innerText)
+    })
+}).observe(result, { childList: true })
