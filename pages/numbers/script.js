@@ -2,8 +2,10 @@
 import { generateRandomNumber } from "../../modules/helpers/generateRandomNumbers.js"
 
 // DOM Elements
-const result = /* @type HTMLParagraphElement  */ (document.getElementById('result'))
-const button = /* @type HTMLButtonElement */ (document.getElementById('randomize'))
+const result = /** @type HTMLParagraphElement  */ (document.getElementById('result'))
+const button = /** @type HTMLButtonElement */ (document.getElementById('randomize'))
+const minInput = /** @type HTMLInputElement */ (document.getElementById('min'))
+const maxInput = /** @type HTMLInputElement */ (document.getElementById('max'))
 
 // Initialize a random result
 result.innerHTML = generateRandomNumber()
