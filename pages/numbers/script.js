@@ -2,16 +2,18 @@
 import { URLState } from "../../modules/classes/URLState.js";
 import { generateRandomNumber } from "../../modules/helpers/generateRandomNumbers.js"
 
-// DOM Elements - Result and Randomize Button
+// DOM Elements
 const result = /** @type HTMLParagraphElement  */ (document.getElementById('result'))
 const button = /** @type HTMLButtonElement */ (document.getElementById('randomize'))
+const minInput = /** @type HTMLInputElement */ (document.getElementById('min'))
+const maxInput = /** @type HTMLInputElement */ (document.getElementById('max'))
 
 // URL State Manager
 const state = new URLState()
 
 // State
-let min = +state.get('min')
-let max = +state.get('max')
+let min = +state.get('min') || minInput.value || 0
+let max = +state.get('max') || maxInput.value || 1000
 let number = generateRandomNumber(min, max)
 
 // Initialize a random result
@@ -22,10 +24,6 @@ button.addEventListener('click', () => {
     number = generateRandomNumber(min, max)
     result.innerHTML = number
 })
-
-// DOM Elements - Min and Max Options
-const minInput = /** @type HTMLInputElement */ (document.getElementById('min'))
-const maxInput = /** @type HTMLInputElement */ (document.getElementById('max'))
 
 // Initialize the input values
 minInput.value = min
