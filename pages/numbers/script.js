@@ -1,5 +1,5 @@
 // Library
-import { URLState } from "../../modules/classes/URLState.js";
+import { URLState } from "../../modules/classes/URLState.js"
 import { generateRandomNumber } from "../../modules/helpers/generateRandomNumbers.js"
 
 // DOM Elements

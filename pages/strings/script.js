@@ -1,6 +1,6 @@
 // Library
-import { URLState } from "../../modules/classes/URLState.js";
-import { generateRandomString } from "../../modules/helpers/generateRandomString.js";
+import { URLState } from "../../modules/classes/URLState.js"
+import { generateRandomString } from "../../modules/helpers/generateRandomString.js"
 
 // DOM Elements
 const result = /** @type HTMLParagraphElement  */ (document.getElementById('result'))
