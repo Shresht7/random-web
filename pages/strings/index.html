@@ -49,7 +49,16 @@
             <div class="flex flex-row">
                 <div class="flex flex-column flex-grow" style="--flex:8;">
                     <label for="charset">Charset</label>
-                    <input id="charset" value="ALPHANUMERIC" placeholder="abcdefghijklmnopqrstuvwxyz" />
+                    <input id="charset" value="ALPHANUMERIC" placeholder="Select or Type ..." list="charsets">
+                    <datalist id="charsets">
+                        <option value="ALPHABETS">Alphabets</option>
+                        <option value="NUMBERS">Numbers</option>
+                        <option value="SPECIAL">Special</option>
+                        <option value="LOWERCASE_ALPHABETS">Lowercase Alphabets</option>
+                        <option value="UPPERCASE_ALPHABETS">Uppercase Alphabets</option>
+                        <option value="ALPHANUMERIC">Alphanumeric</option>
+                    </datalist>
+                    </input>
                 </div>
                 <div class="flex flex-column flex-grow" style="--flex: 1;">
                     <label for="length">Length</label>
