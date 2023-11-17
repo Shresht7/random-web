@@ -6,12 +6,13 @@ import { generateRandomString } from "../../modules/helpers/generateRandomString
 const result = /** @type HTMLParagraphElement  */ (document.getElementById('result'))
 const button = /** @type HTMLButtonElement */ (document.getElementById('randomize'))
 const lengthInput = /** @type HTMLInputElement */ (document.getElementById('length'))
+const charsetInput = /** @type HTMLInputElement */ (document.getElementById('charset'))
 
 // URL State Manager
 const state = new URLState()
 
 // State
-let charset = state.get('charset') || 'ALPHANUMERIC'
+let charset = state.get('charset') || charsetInput.value || 'ALPHANUMERIC'
 let length = +state.get('length') || +lengthInput.value || 16
 let string = generateRandomString(charset, length)
 
@@ -26,10 +27,16 @@ button.addEventListener('click', () => {
 
 // Initialize the option values from the initial URL
 lengthInput.value = length
+charsetInput.value = charset
 
 // Register on change event handlers to update the state
 lengthInput.addEventListener('change', (e) => {
     length = +e.target.value
     state.set('length', length)
+    state.push()
+})
+charsetInput.addEventListener('change', (e) => {
+    charset = e.target.value
+    state.set('charset', charset)
     state.push()
 })
