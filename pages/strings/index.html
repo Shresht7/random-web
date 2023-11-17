@@ -46,13 +46,15 @@
         <section class="flex flex-column gap-3">
             <h2 class="font-size-3">OPTIONS</h2>
 
-            <div class="flex flex-column">
-                <label for="charset">Charset</label>
-                <input id="charset" value="LOWERCASE_ALPHABETS" placeholder="abcdefghijklmnopqrstuvwxyz" />
-            </div>
-            <div class="flex flex-column">
-                <label for="length">Length</label>
-                <input id="length" type="number" value="16" placeholder="16" />
+            <div class="flex flex-row">
+                <div class="flex flex-column flex-grow" style="--flex:8;">
+                    <label for="charset">Charset</label>
+                    <input id="charset" value="LOWERCASE_ALPHABETS" placeholder="abcdefghijklmnopqrstuvwxyz" />
+                </div>
+                <div class="flex flex-column flex-grow" style="--flex: 1;">
+                    <label for="length">Length</label>
+                    <input id="length" type="number" value="16" placeholder="16" />
+                </div>
             </div>
         </section>
 

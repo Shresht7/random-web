@@ -115,7 +115,7 @@ input {
 }
 
 .flex-grow {
-    flex: var(--flex);
+    flex: var(--flex, 1);
 }
 
 .gap-1 {
