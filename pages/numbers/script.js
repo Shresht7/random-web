@@ -12,8 +12,8 @@ const maxInput = /** @type HTMLInputElement */ (document.getElementById('max'))
 const state = new URLState()
 
 // State
-let min = +state.get('min') || minInput.value || 0
-let max = +state.get('max') || maxInput.value || 1000
+let min = +state.get('min') || +minInput.value || 0
+let max = +state.get('max') || +maxInput.value || 1000
 let number = generateRandomNumber(min, max)
 
 // Initialize a random result
