@@ -17,12 +17,12 @@ let max = +state.get('max') || +maxInput.value || 1000
 let number = generateRandomNumber(min, max)
 
 // Initialize a random result
-result.innerHTML = number
+result.innerText = number
 
 // Register an on-click event listener to regenerate the number when the button is pressed
 button.addEventListener('click', () => {
     number = generateRandomNumber(min, max)
-    result.innerHTML = number
+    result.innerText = number
 })
 
 // Initialize the input values
