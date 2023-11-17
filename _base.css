@@ -60,6 +60,7 @@ body {
 }
 
 main {
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -87,6 +88,7 @@ button:hover {
 }
 
 input {
+    width: 100%;
     font-family: inherit;
     padding: 0.5rem 0.75rem;
     padding-right: 0.25rem;
@@ -113,7 +115,7 @@ input {
 }
 
 .flex-grow {
-    flex: 1;
+    flex: var(--flex);
 }
 
 .gap-1 {
