@@ -5,6 +5,7 @@ import { URLState } from "../../modules/classes/URLState.js"
 const result = /** @type HTMLParagraphElement */ (document.getElementById('result'))
 const button = /** @type HTMLButtonElement */ (document.getElementById('randomize'))
 const rollInput = /** @type HTMLInputElement */ (document.getElementById('roll'))
+const rollsDiv = /** @type HTMLDivElement */ (document.getElementById('rolls'))
 
 // URL State Manager
 const state = new URLState()
@@ -14,8 +15,17 @@ let expression = state.get('q') || rollInput.value || '1d20'
 
 // Register on-click event handler to reroll
 button.addEventListener('click', () => {
-    const [rolls, total] = evaluate(expression)
+    const { rolls, addition, total } = evaluate(expression)
     result.innerText = total.toString()
+    rollsDiv.innerHTML = ''
+    for (const [term, roll] of Object.entries(rolls)) {
+        const div = document.createElement('div')
+        div.innerHTML = "[" + roll.join(', ') + "]"
+        rollsDiv.appendChild(div)
+    }
+    const add = document.createElement('div')
+    add.innerText = `+ ${addition}`
+    rollsDiv.appendChild(add)
 })
 
 // Initialize the input values from the initial URL
@@ -36,7 +46,7 @@ rollInput.addEventListener('change', (e) => {
 /**
  * Evaluates the given dice roll expression and returns the result
  * @param {string} expression The roll expression
- * @returns {[Record<string, number[]>, number]}
+ * @returns {{rolls: Record<string, number[]>, addition: number, total: number }}
  */
 function evaluate(expression = "1d20") {
 
@@ -47,6 +57,7 @@ function evaluate(expression = "1d20") {
     /** @type Record<string, number[]> */
     let rolls = {}
     let total = 0
+    let addition = 0
     for (const term of terms) {
         // If this is a dice term...
         if (term.toLowerCase().includes('d')) {
@@ -55,11 +66,12 @@ function evaluate(expression = "1d20") {
             total += r.reduce((acc, cur) => acc + cur)
             rolls[term] = r
         } else { // ... else if the term is an addition
-            total += parseInt(term)
+            addition += parseInt(term)
         }
     }
+    total += addition
 
-    return [rolls, total]
+    return { rolls, addition, total }
 }
 
 /**
