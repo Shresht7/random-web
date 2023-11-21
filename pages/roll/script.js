@@ -1,17 +1,32 @@
-//@ts-check
+// Library
+import { URLState } from "../../modules/classes/URLState.js"
 
 // DOM Elements
 const result = /** @type HTMLParagraphElement */ (document.getElementById('result'))
 const button = /** @type HTMLButtonElement */ (document.getElementById('randomize'))
 const rollInput = /** @type HTMLInputElement */ (document.getElementById('roll'))
 
-// State
-let expression = rollInput.value || '1d20'
+// URL State Manager
+const state = new URLState()
 
-// Register on-click event handler to 
+// State
+let expression = state.get('q') || rollInput.value || '1d20'
+
+// Register on-click event handler to reroll
 button.addEventListener('click', () => {
     const [rolls, total] = evaluate(expression)
     result.innerText = total.toString()
+})
+
+// Initialize the input values from the initial URL
+rollInput.value = expression
+
+// Register on change event handlers to update the state
+rollInput.addEventListener('change', (e) => {
+    if (!e.target) { return }
+    expression = e.target.value
+    state.set('q', expression)
+    state.push()
 })
 
 // ================
