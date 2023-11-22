@@ -35,6 +35,10 @@ function addToList(item) {
     copyBtn.innerText = "📋"
     copyBtn.addEventListener('click', () => {
         navigator.clipboard.writeText(item)
+        copyBtn.innerText = "✅"
+        setTimeout(() => {
+            copyBtn.innerText = "📋"
+        }, 2000)
     })
     buttons.appendChild(copyBtn)
 
