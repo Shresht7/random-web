@@ -72,24 +72,6 @@ main {
 
 button {
     cursor: pointer;
-    background-color: var(--color-text);
-    color: var(--color-primary);
-    letter-spacing: 0.25ch;
-    border: var(--border);
-    border-radius: var(--border-radius);
-    padding: 1rem 1.5rem;
-    transition: all var(--animation-duration) ease-in;
-}
-
-button:hover {
-    outline: var(--border);
-    outline-offset: 4px;
-    box-shadow: 0px 0px 25px 0 var(--color-text);
-}
-
-button.btn-secondary {
-    background-color: var(--color-primary);
-    color: var(--color-text);
 }
 
 input {
@@ -102,6 +84,29 @@ input {
 }
 
 /* UTILITY */
+
+.btn {
+    background-color: var(--color-text);
+    color: var(--color-primary);
+    letter-spacing: 0.25ch;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.5rem;
+    transition: all var(--animation-duration) ease-in;
+}
+
+.btn:hover {
+    outline: var(--border);
+    outline-offset: 4px;
+    box-shadow: 0px 0px 25px 0 var(--color-text);
+}
+
+.btn-secondary {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    padding: 0.25rem;
+    border: none;
+}
 
 .flex {
     display: flex;
