@@ -27,14 +27,26 @@ function addToList(item) {
     text.innerText = item
     div.appendChild(text)
 
-    const clearBtn = document.createElement('button') // Delete button
+    const buttons = document.createElement('div')   // Buttons
+    buttons.classList.add('flex', 'flex-row')
+
+    const copyBtn = document.createElement('button')    // Copy to clipboard button
+    copyBtn.classList.add('btn-secondary')
+    copyBtn.innerText = "📋"
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(item)
+    })
+    buttons.appendChild(copyBtn)
+
+    const clearBtn = document.createElement('button')   // Delete button
     clearBtn.classList.add('btn-secondary')
     clearBtn.innerText = "🗑️"
     clearBtn.addEventListener('click', () => {
         list.removeChild(div)
     })
-    div.appendChild(clearBtn)
+    buttons.appendChild(clearBtn)
 
+    div.appendChild(buttons)
     list.appendChild(div)
 }
 
