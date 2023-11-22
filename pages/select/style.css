@@ -13,6 +13,7 @@ input {
 
 #list {
     width: 100%;
+    flex-direction: column-reverse;
 }
 
 .list-item {
