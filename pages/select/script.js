@@ -63,6 +63,22 @@ button.addEventListener('click', () => {
     // Select one option at random
     const idx = Math.floor(Math.random() * list.children.length)
     const selection = list.children.item(idx)
+    if (!selection) { return }
+
     // Add the select class to highlight the selection
-    selection?.classList.add('selected')
+    selection.classList.add('selected')
+    // and scroll it into view if it is off-screen
+    scrollToViewIfNeeded(selection)
 })
+
+/**
+ * Scroll the element into view if it is off screen
+ * @param {Element} e Element
+ */
+function scrollToViewIfNeeded(e) {
+    if (!e) { return }
+    var rect = e.getBoundingClientRect()
+    if (rect.top < 0 || rect.bottom > window.innerHeight) {
+        e.scrollIntoView({ behavior: 'smooth' })
+    }
+}
