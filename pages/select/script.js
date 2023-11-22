@@ -8,53 +8,78 @@ const button = /** @type HTMLButtonElement */ (document.getElementById('randomiz
 const input = /** @type HTMLInputElement */ (document.getElementById('input'))
 const list = /** @type HTMLDivElement */ (document.getElementById('list'))
 
+// -----
+// STATE
+// -----
+
 // URL State Manager
-const state = new URLState()
+const urlState = new URLState()
 
-let s = new Set(state.get('q')?.split(',')) || []
-if (s.size) {
-    s.forEach(x => addToList(x))
-    makeSelection()
-}
+// State
+let state = new Set(urlState.get('q')?.split(',')) || new Set()
 
+/** Updates the URL to correspond to the current state */
 function updateURL() {
-    let res = []
-    for (const item of s) {
-        res.push(item)
-    }
-    let q = res.join(',')
-    state.set('q', q)
-    state.push()
+    urlState.set('q', Array.from(state).join(','))
+    urlState.push()
 }
+
+// Initialize the options list on page load
+if (state.size) {
+    state.forEach(x => addToList(x))
+    makeSelection() // If the options were provided by URL, make a selection automatically
+}
+
+// -------------
+// SELECT BUTTON
+// -------------
+
+// Register a on-click event listener to select one of the element from the list
+button.addEventListener('click', makeSelection)
+
+// -----
+// INPUT
+// -----
 
 // Add the text-input to the list of options when the "Enter" key is pressed
 input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         let text = input.value
         if (!text) { return }   // If text is null, return
+
         addToList(text)         // Add text to the list of options
-        s.add(text)
+
+        state.add(text)         // Update the state
         updateURL()             // Update the url
+
         input.value = ""        // Clear the input element
     }
 })
+
+// ----
+// LIST
+// ----
 
 /**
  * Adds the given text to the list of options
  * @param {string} item The text to add to the list of options
  */
 function addToList(item) {
-    const div = document.createElement('div')   // Container
-    div.classList.add('list-item', 'fade-in')   // Apply styles
+    /** List Item Container */
+    const div = document.createElement('div')
+    div.classList.add('list-item', 'fade-in')
 
-    const text = document.createElement('p')    // Text Element
+    /** List Item Text */
+    const text = document.createElement('p')
     text.innerText = item
     div.appendChild(text)
 
-    const buttons = document.createElement('div')   // Buttons
+    /** List Item Buttons */
+    const buttons = document.createElement('div')
     buttons.classList.add('flex', 'flex-row')
 
-    const copyBtn = document.createElement('button')    // Copy to clipboard button
+    /** List Item Button - Copy to Clipboard */
+    const copyBtn = document.createElement('button')
     copyBtn.classList.add('btn-secondary')
     copyBtn.innerText = "📋"
     copyBtn.addEventListener('click', () => {
@@ -66,23 +91,27 @@ function addToList(item) {
     })
     buttons.appendChild(copyBtn)
 
-    const clearBtn = document.createElement('button')   // Delete button
+    /** List Item Button - Delete */
+    const clearBtn = document.createElement('button')
     clearBtn.classList.add('btn-secondary')
     clearBtn.innerText = "🗑️"
     clearBtn.addEventListener('click', () => {
-        s.delete(item)
+        state.delete(item)
         updateURL()
         list.removeChild(div)
     })
     buttons.appendChild(clearBtn)
 
+    // Append nodes
     div.appendChild(buttons)
     list.appendChild(div)
 }
 
-// Register a on-click event listener to select one of the element from the list
-button.addEventListener('click', makeSelection)
+// --------------
+// MAKE SELECTION
+// --------------
 
+/** Select one of the many list options */
 function makeSelection() {
     // Remove the selected class from any items that already have it
     for (const child of list.children) {
@@ -99,14 +128,18 @@ function makeSelection() {
     scrollToViewIfNeeded(selection)
 }
 
+// ----------------
+// HELPER FUNCTIONS
+// ----------------
+
 /**
  * Scroll the element into view if it is off screen
- * @param {Element} e Element
+ * @param {Element} element Element
  */
-function scrollToViewIfNeeded(e) {
-    if (!e) { return }
-    var rect = e.getBoundingClientRect()
+function scrollToViewIfNeeded(element) {
+    if (!element) { return }
+    var rect = element.getBoundingClientRect()
     if (rect.top < 0 || rect.bottom > window.innerHeight) {
-        e.scrollIntoView({ behavior: 'smooth' })
+        element.scrollIntoView({ behavior: 'smooth' })
     }
 }
