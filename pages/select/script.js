@@ -4,7 +4,6 @@
 const button = /** @type HTMLButtonElement */ (document.getElementById('randomize'))
 const input = /** @type HTMLInputElement */ (document.getElementById('input'))
 const list = /** @type HTMLDivElement */ (document.getElementById('list'))
-const clearAll = /** @type HTMLButtonElement */ (document.getElementById('clear-all'))
 
 // Add the text-input to the list of options when the "Enter" key is pressed
 input.addEventListener('keypress', (e) => {
@@ -26,8 +25,16 @@ function addToList(item) {
 
     const text = document.createElement('p')    // Text Element
     text.innerText = item
-
     div.appendChild(text)
+
+    const clearBtn = document.createElement('button') // Delete button
+    clearBtn.classList.add('btn-secondary')
+    clearBtn.innerText = "🗑️"
+    clearBtn.addEventListener('click', () => {
+        list.removeChild(div)
+    })
+    div.appendChild(clearBtn)
+
     list.appendChild(div)
 }
 
@@ -42,9 +49,4 @@ button.addEventListener('click', () => {
     const selection = list.children.item(idx)
     // Add the select class to highlight the selection
     selection?.classList.add('selected')
-})
-
-// Clear all the elements from the list
-clearAll.addEventListener('click', () => {
-    list.innerHTML = ''
 })
