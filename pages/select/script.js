@@ -1,9 +1,32 @@
 //@ts-check
 
+// Library
+import { URLState } from "../../modules/classes/URLState.js"
+
 // DOM Elements
 const button = /** @type HTMLButtonElement */ (document.getElementById('randomize'))
 const input = /** @type HTMLInputElement */ (document.getElementById('input'))
 const list = /** @type HTMLDivElement */ (document.getElementById('list'))
+
+// URL State Manager
+const state = new URLState()
+
+let s = new Set(state.get('q')?.split(',')) || []
+if (s.size) {
+    s.forEach(x => addToList(x))
+    makeSelection()
+}
+
+function updateURL(text) {
+    s.add(text)
+    let res = []
+    for (const item of s) {
+        res.push(item)
+    }
+    let q = res.join(',')
+    state.set('q', q)
+    state.push()
+}
 
 // Add the text-input to the list of options when the "Enter" key is pressed
 input.addEventListener('keypress', (e) => {
@@ -11,6 +34,7 @@ input.addEventListener('keypress', (e) => {
         let text = input.value
         if (!text) { return }   // If text is null, return
         addToList(text)         // Add text to the list of options
+        updateURL(text)         // Update the url
         input.value = ""        // Clear the input element
     }
 })
@@ -55,7 +79,9 @@ function addToList(item) {
 }
 
 // Register a on-click event listener to select one of the element from the list
-button.addEventListener('click', () => {
+button.addEventListener('click', makeSelection)
+
+function makeSelection() {
     // Remove the selected class from any items that already have it
     for (const child of list.children) {
         child.classList.remove('selected')
@@ -69,7 +95,7 @@ button.addEventListener('click', () => {
     selection.classList.add('selected')
     // and scroll it into view if it is off-screen
     scrollToViewIfNeeded(selection)
-})
+}
 
 /**
  * Scroll the element into view if it is off screen
