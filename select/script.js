@@ -1,7 +1,7 @@
 //@ts-check
 
 // Library
-import { URLState } from "../../modules/classes/URLState.js"
+import { URLState } from "../modules/classes/URLState.js"
 
 // DOM Elements
 const button = /** @type HTMLButtonElement */ (document.getElementById('randomize'))

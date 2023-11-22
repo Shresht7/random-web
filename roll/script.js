@@ -1,5 +1,5 @@
 // Library
-import { URLState } from "../../modules/classes/URLState.js"
+import { URLState } from "../modules/classes/URLState.js"
 
 // DOM Elements
 const result = /** @type HTMLParagraphElement */ (document.getElementById('result'))
