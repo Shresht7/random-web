@@ -17,8 +17,7 @@ if (s.size) {
     makeSelection()
 }
 
-function updateURL(text) {
-    s.add(text)
+function updateURL() {
     let res = []
     for (const item of s) {
         res.push(item)
@@ -34,7 +33,8 @@ input.addEventListener('keypress', (e) => {
         let text = input.value
         if (!text) { return }   // If text is null, return
         addToList(text)         // Add text to the list of options
-        updateURL(text)         // Update the url
+        s.add(text)
+        updateURL()             // Update the url
         input.value = ""        // Clear the input element
     }
 })
@@ -70,6 +70,8 @@ function addToList(item) {
     clearBtn.classList.add('btn-secondary')
     clearBtn.innerText = "🗑️"
     clearBtn.addEventListener('click', () => {
+        s.delete(item)
+        updateURL()
         list.removeChild(div)
     })
     buttons.appendChild(clearBtn)
