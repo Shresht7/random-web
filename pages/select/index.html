@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets/logo.svg" type="image/svg">
+    <link rel="shortcut icon" href="/assets/dice-6.svg" type="image/svg">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="_base.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/_base.css">
+    <link rel="stylesheet" href="/pages/select/style.css">
 
     <!-- Scripts -->
-    <script type="module" src="script.js"></script>
+    <script type="module" src="/pages/select/script.js"></script>
 
     <!-- Title -->
-    <title>Random</title>
+    <title>Random | Select</title>
 </head>
 
 <body>
@@ -28,30 +28,23 @@
             <img src="/assets/dice-4.svg" alt="logo" />
             <h1 class="bold">Random</h1>
         </a>
-        <p class="font-family-cursive font-size-3">For when you need some randomness</p>
+        <p class="font-family-cursive font-size-3">Let fate decide!</p>
     </header>
 
     <!-- MAIN SECTION -->
     <main>
 
-        <h2>Select a module:</h2>
+        <!-- INPUT -->
+        <div id="selection" class="flex gap-2">
+            <label for="input"></label>
+            <input id="input" placeholder="Enter your text here ..." />
+            <button type="submit" id="randomize" class="bold">
+                SELECT
+            </button>
+        </div>
 
-        <div id="menu" class="flex flex-column gap-2">
-            <a href="/pages/select/" class="menu-item">
-                <p>Select</p>
-            </a>
-            <a href="/pages/numbers/" class="menu-item">
-                <p>Numbers</p>
-            </a>
-            <a href="/pages/strings/" class="menu-item">
-                <p>Strings</p>
-            </a>
-            <a href="/pages/uuid/" class="menu-item">
-                <p>UUID</p>
-            </a>
-            <a href="/pages/roll/" class="menu-item">
-                <p>Roll</p>
-            </a>
+        <!-- LIST -->
+        <div id="list" class="flex gap-1">
         </div>
 
     </main>
