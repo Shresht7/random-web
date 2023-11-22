@@ -15,7 +15,7 @@ input.addEventListener('keypress', (e) => {
 
 function addToList(item) {
     const div = document.createElement('div')
-    div.classList.add('list-item')
+    div.classList.add('list-item', 'fade-in')
     const text = document.createElement('p')
     text.innerText = item
     div.appendChild(text)
