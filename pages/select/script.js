@@ -16,16 +16,16 @@ const list = /** @type HTMLDivElement */ (document.getElementById('list'))
 const urlState = new URLState()
 
 // State
-let state = new Set(urlState.get('q')?.split(',')) || new Set()
+let state = urlState.get('q')?.split(',') || []
 
 /** Updates the URL to correspond to the current state */
 function updateURL() {
-    urlState.set('q', Array.from(state).join(','))
+    urlState.set('q', state.join(','))
     urlState.push()
 }
 
 // Initialize the options list on page load
-if (state.size) {
+if (state.length) {
     state.forEach(x => addToList(x))
     makeSelection() // If the options were provided by URL, make a selection automatically
 }
@@ -49,7 +49,7 @@ input.addEventListener('keypress', (e) => {
 
         addToList(text)         // Add text to the list of options
 
-        state.add(text)         // Update the state
+        state.push(text)         // Update the state
         updateURL()             // Update the url
 
         input.value = ""        // Clear the input element
@@ -96,7 +96,7 @@ function addToList(item) {
     clearBtn.classList.add('btn-secondary')
     clearBtn.innerText = "🗑️"
     clearBtn.addEventListener('click', () => {
-        state.delete(item)
+        state.filter(x => x !== item)
         updateURL()
         list.removeChild(div)
     })
