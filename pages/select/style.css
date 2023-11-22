@@ -3,6 +3,7 @@ html {
     width: auto;
     height: auto;
     min-height: 100dvh;
+    position: relative;
 }
 
 main {
@@ -41,4 +42,21 @@ input {
     color: black;
     box-shadow: 0px 0px 25px 0 var(--color-text);
     transform: scale(1.025);
+}
+
+#back-to-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: 2px solid var(--color-text);
+    transform: rotate(-90deg);
+}
+
+#back-to-top.hidden {
+    display: none;
 }

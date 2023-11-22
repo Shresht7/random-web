@@ -85,6 +85,10 @@ input {
 
 /* UTILITY */
 
+.hidden {
+    display: none;
+}
+
 .btn {
     background-color: var(--color-text);
     color: var(--color-primary);

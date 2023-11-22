@@ -7,6 +7,7 @@ import { URLState } from "../../modules/classes/URLState.js"
 const button = /** @type HTMLButtonElement */ (document.getElementById('randomize'))
 const input = /** @type HTMLInputElement */ (document.getElementById('input'))
 const list = /** @type HTMLDivElement */ (document.getElementById('list'))
+const backToTop = /** @type HTMLDivElement */ (document.getElementById('back-to-top'))
 
 // -----
 // STATE
@@ -127,6 +128,28 @@ function makeSelection() {
     // and scroll it into view if it is off-screen
     scrollToViewIfNeeded(selection)
 }
+
+// -----------
+// BACK TO TOP
+// -----------
+
+// Create a back to top scroll listener
+document.addEventListener('scroll', () => {
+    const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+    const progress = Math.min(window.scrollY / totalHeight, 1)
+    if (progress > 0.2) {
+        backToTop.classList.remove('hidden', 'fade-out')
+        backToTop.classList.add('fade-in')
+    } else {
+        backToTop.classList.remove('fade-in')
+        backToTop.classList.add('hidden', 'fade-out')
+    }
+})
+
+// Scroll back to the top
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+})
 
 // ----------------
 // HELPER FUNCTIONS
