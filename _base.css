@@ -235,3 +235,22 @@ input {
 .underline-on-hover:hover::after {
     width: 100%;
 }
+
+/* Components */
+
+#back {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: 2px solid var(--color-text);
+    transform: rotate(180deg);
+}
+
+#back:hover {
+    cursor: pointer;
+}
