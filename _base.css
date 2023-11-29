@@ -242,6 +242,25 @@ input {
 
 /* Components */
 
+.tooltip {
+    position: relative;
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+
+    width: max-content;
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #333;
+    color: whitesmoke;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
 #back {
     position: absolute;
     top: 2rem;
@@ -252,7 +271,6 @@ input {
     padding: 0.5rem;
     border-radius: 50%;
     border: 2px solid var(--color-text);
-    transform: rotate(180deg);
 }
 
 #back:hover {
