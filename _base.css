@@ -242,11 +242,11 @@ input {
 
 /* Components */
 
-.tooltip {
+[data-tooltip] {
     position: relative;
 }
 
-.tooltip::after {
+[data-tooltip]::after {
     content: attr(data-tooltip);
 
     width: max-content;
@@ -267,8 +267,8 @@ input {
     transition: all var(--animation-duration) ease-in;
 }
 
-.tooltip:focus::after,
-.tooltip:hover::after {
+[data-tooltip]:focus::after,
+[data-tooltip]:hover::after {
     opacity: 1;
     top: 150%;
 }
