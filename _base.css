@@ -248,29 +248,47 @@ input {
 
 [data-tooltip]::after {
     content: attr(data-tooltip);
-
     width: max-content;
+    z-index: 2;
 
     position: absolute;
-    top: 100%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -50%);
 
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.50);
     color: whitesmoke;
     font-size: 0.75rem;
-
     padding: 0.5rem;
     border-radius: 4px;
 
     opacity: 0;
-    transition: all var(--animation-duration) ease-in;
+    transition: all 100ms ease-out;
 }
 
 [data-tooltip]:focus::after,
 [data-tooltip]:hover::after {
     opacity: 1;
-    top: 150%;
+}
+
+[data-tooltip][data-tooltip-pos=bottom]:hover::after,
+[data-tooltip][data-tooltip-pos=bottom]:hover::after {
+    top: 175%;
+}
+
+[data-tooltip][data-tooltip-pos=right]:focus::after,
+[data-tooltip][data-tooltip-pos=right]:hover::after {
+    left: 250%;
+}
+
+[data-tooltip][data-tooltip-pos=top]:focus::after,
+[data-tooltip][data-tooltip-pos=top]:hover::after {
+    top: -75%;
+}
+
+[data-tooltip][data-tooltip-pos=left]:focus::after,
+[data-tooltip][data-tooltip-pos=left]:hover::after {
+    left: -175%;
 }
 
 #back {
