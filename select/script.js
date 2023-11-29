@@ -79,6 +79,11 @@ function addToList(item) {
     const buttons = document.createElement('div')
     buttons.classList.add('flex', 'flex-row')
 
+    // Buttons tooltip
+    const tooltip = document.createElement('p')
+    tooltip.classList.add('font-size-1')
+    buttons.appendChild(tooltip)
+
     /** List Item Button - Copy to Clipboard */
     const copyBtn = document.createElement('button')
     copyBtn.classList.add('btn-secondary')
@@ -90,6 +95,8 @@ function addToList(item) {
             copyBtn.innerText = "📋"
         }, 2000)
     })
+    copyBtn.addEventListener('mouseover', () => tooltip.innerText = 'Copy to Clipboard')
+    copyBtn.addEventListener('mouseleave', () => tooltip.innerText = '')
     buttons.appendChild(copyBtn)
 
     /** List Item Button - Delete */
@@ -101,6 +108,8 @@ function addToList(item) {
         updateURL()
         list.removeChild(div)
     })
+    clearBtn.addEventListener('mouseover', () => tooltip.innerText = 'Delete')
+    clearBtn.addEventListener('mouseleave', () => tooltip.innerText = '')
     buttons.appendChild(clearBtn)
 
     // Append nodes
