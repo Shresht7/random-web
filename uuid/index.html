@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets/logo.svg" type="image/svg">
+    <link rel="shortcut icon" href="/assets/dice-6.svg" type="image/svg">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="_base.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/_base.css">
+    <link rel="stylesheet" href="/uuid/style.css">
 
     <!-- Scripts -->
-    <script type="module" src="script.js"></script>
+    <script type="module" src="/uuid/script.js"></script>
 
     <!-- Title -->
-    <title>Random</title>
+    <title>Random | UUID</title>
 </head>
 
 <body>
@@ -27,32 +27,19 @@
             <img src="/assets/dice-4.svg" alt="logo" />
             <h1 class="bold">Random</h1>
         </a>
-        <p class="font-family-cursive font-size-3">For when you need some randomness</p>
+        <p class="font-family-cursive font-size-3">Generate some random uuids!</p>
     </header>
 
     <!-- MAIN SECTION -->
     <main>
 
-        <h2>Select a module:</h2>
-
-        <div id="menu" class="flex flex-column gap-2">
-            <a href="/select/" class="menu-item">
-                <p>Select</p>
-            </a>
-            <a href="/numbers/" class="menu-item">
-                <p>Numbers</p>
-            </a>
-            <a href="/strings/" class="menu-item">
-                <p>Strings</p>
-            </a>
-            <a href="/uuid/" class="menu-item">
-                <p>UUID</p>
-            </a>
-            <a href="/roll/" class="menu-item">
-                <p>Roll</p>
-            </a>
-        </div>
-
+        <!-- RESULTS -->
+        <section class="flex flex-grow gap-2">
+            <p id="result" class="font-size-3">&nbsp;</p>
+            <button type="button" id="randomize" class="btn bold">
+                RANDOMIZE
+            </button>
+        </section>
     </main>
 
     <!-- FOOTER SECTION -->
