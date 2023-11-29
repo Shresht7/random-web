@@ -1,1 +1,5 @@
-
+@media screen and (width < 768px) {
+    #result {
+        font-size: 1em;
+    }
+}
